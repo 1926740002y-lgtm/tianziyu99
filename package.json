@@ -1,0 +1,17 @@
+{
+  "name": "concert-seat-registration",
+  "version": "1.1.0",
+  "private": true,
+  "description": "演唱会座位登记网站：零依赖 Node 服务 + JSON 持久化，支持手机与电脑浏览器访问；数据可存 Netlify Blobs / Upstash Redis",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

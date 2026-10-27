@@ -1,0 +1,23 @@
+# Netlify 部署配置
+# publish 目录是纯静态前端；/api/* 交给 Functions 处理，其余请求回落到前端
+
+[build]
+  publish = "public"
+  # 安装 @netlify/blobs 依赖（数据持久化必需）
+  command = "npm install --omit=dev"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true
+
+# 前端是 hash 路由，任何未命中静态文件的路径都交给 index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
